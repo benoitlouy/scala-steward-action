@@ -6,6 +6,8 @@ on:
     branches-ignore: ['dependabot/**']
     types: [completed]
 
+  workflow_dispatch:
+
 jobs:
   release-snapshot-artifact:
     runs-on: ubuntu-latest
