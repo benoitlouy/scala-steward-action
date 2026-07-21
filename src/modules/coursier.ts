@@ -122,7 +122,6 @@ export async function install(): Promise<void> {
   }
 }
 
-
 /**
  * A `ConnectivityProbe` that uses `cs resolve` to verify the configured
  * Maven repositories are reachable. Returns `true` if metadata for a
