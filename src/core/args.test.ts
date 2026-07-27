@@ -22,7 +22,7 @@ test('`parseArgs` → keeps double-quoted values containing spaces as a single t
 })
 
 test('`parseArgs` → keeps single-quoted values containing spaces as a single token', t => {
-  t.deepEqual(parseArgs("--git-author-name 'My Name'"), ['--git-author-name', 'My Name'])
+  t.deepEqual(parseArgs('--git-author-name \'My Name\''), ['--git-author-name', 'My Name'])
 })
 
 test('`parseArgs` → strips quotes attached to a flag value', t => {

@@ -10,7 +10,7 @@
  * @returns The parsed list of argument tokens. Empty or whitespace-only input yields `[]`.
  */
 export function parseArgs(input: string): string[] {
-  const tokens = input.match(/(?:[^\s"']+|"[^"]*"|'[^']*')+/g) ?? []
+  const tokens = input.match(/(?:[^\s"']+|"[^"]*"|'[^']*')+/gv) ?? []
 
-  return tokens.map(token => token.replaceAll(/"([^"]*)"|'([^']*)'/g, '$1$2'))
+  return tokens.map(token => token.replaceAll(/"([^"]*)"|'([^']*)'/gv, '$1$2'))
 }
