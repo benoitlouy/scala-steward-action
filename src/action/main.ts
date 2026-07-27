@@ -7,6 +7,7 @@ import {getOctokit} from '@actions/github'
 import * as io from '@actions/io'
 import {createAppAuth} from '@octokit/auth-app'
 import {request} from '@octokit/request'
+import {parseArgs} from '../core/args.js'
 import {type Files} from '../core/files.js'
 import {type Logger} from '../core/logger.js'
 import {nonEmpty, NonEmptyString} from '../core/types.js'
@@ -89,7 +90,7 @@ async function run(): Promise<void> {
         argument('--github-app-key-file', inputs.github.app && !inputs.github.app.authOnly ? workspace.app_pem : undefined),
         inputs.steward.doNotFork ? '--do-not-fork' : [],
         '--disable-sandbox',
-        inputs.steward.extraArgs?.value.split(' ') ?? [],
+        parseArgs(inputs.steward.extraArgs?.value ?? ''),
       ], inputs.steward.extraJars)
     } finally {
       if (files.existsSync(workspace.runSummary_md)) {
